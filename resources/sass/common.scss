@@ -1,0 +1,66 @@
+/** Nav・Sidebar・Mainなどの骨格 */
+#app {
+  position: relative;
+}
+
+.navbar-front {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #227444 !important;
+
+  a.navbar-menu {
+    color: #ffffff;
+  }
+
+  a.navbar-menu:hover {
+    background-color: #2FB5AA;
+    color: #ffffff;
+  }
+}
+
+.main-box {
+  padding: 52px 0 0 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content-box {
+  padding: 30px 0 10px 0;
+}
+
+
+// carousel
+.carousel-item .img-fluid {
+  width:100%;
+  height:auto;
+}
+
+.carousel-item{
+  height: auto;
+}
+
+.carousel-item a {
+  display: block;
+  width:100%;
+}
+
+.carousel-item .show-image {
+  display: block;
+  width:100%;
+}
+
+.front {
+  background-color: ghostwhite;
+}
+
+.headline {
+}
+
+.carousel {
+  z-index: 100;
+  height: 10%;
+
+}
