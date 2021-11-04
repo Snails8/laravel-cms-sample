@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterPostRequest;
 use App\Mail\RegisterMail;
-use App\Models\HrCompany;
-use App\Models\Register;
+use App\Models\Customer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -46,9 +45,9 @@ class RegisterController extends Controller
 
         DB::beginTransaction();
         try {
-            $hrCompany = new HrCompany();
+            $customer = new Customer();
 
-            $hrCompany->fill($validated)->save();
+            $customer->fill($validated)->save();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();

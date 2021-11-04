@@ -28,13 +28,12 @@ class RegisterPostRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name'          => 'required|max:255',
-            'zipcode'       => 'required',
-            'address'       => 'required|string|max:255',
-            'address_other' => 'string|max:255',
+            'name'          => 'required',
+            'kana'          => 'required',
             'tel'           => 'required|regex:/^[0-9]{2,4}[0-9]{2,4}[0-9]{3,4}$/',
             'email'         => 'required|email',
-            'ceo'           => 'required|max:255',
+            'password'              => 'required|confirmed|regex:/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i',
+            'password_confirmation' => 'required',
         ];
 
         return $rules;
@@ -48,18 +47,17 @@ class RegisterPostRequest extends FormRequest
         $messages = [
             'name.required'        => '会社名は必ず入力してください。',
             'name.max'             => '会社名は255文字以内で入力してください。',
-            'zipcode.required'     => '郵便番号は必ず入力してください。',
-            'address.required'     => '住所は必ず入力してください。',
-            'address.string'       => '住所の入力値が有効な形式ではありません。',
-            'address.max'          => '住所は255文字以内で入力してください。',
-            'address_other.string' => '建物名/部屋番号の入力値が有効な形式ではありません。',
-            'address_other.max'    => '建物名/部屋番号は255文字以内で入力してください。',
+            'kana.required'        => '会社名は必ず入力してください。',
+            'kana.max'             => '会社名は255文字以内で入力してください。',
             'tel.required'         => '電話番号は必ず入力してください。',
             'tel.regex'            => '有効な電話番号の形式ではありません。',
             'email.required'       => 'メールアドレスは必ず入力してください。',
             'email.email'          => '有効なメールアドレスの形式ではありません。',
-            'ceo.required'         => '代表名は必ず入力してください。',
-            'ceo.max'              => '代表名は255文字以内で入力してください。',
+            'email.unique'       => 'このメールアドレスは既に登録されています。',
+            'password.required'  => 'パスワードは必須項目です。',
+            'password.regex'     => '半角英数字それぞれを1種類以上含む8-100文字で入力してください。',
+            'password.confirmed' => '確認用パスワードと一致していません。',
+            'password_confirmation.required' => 'パスワードは必須項目です。',
         ];
 
         return $messages;

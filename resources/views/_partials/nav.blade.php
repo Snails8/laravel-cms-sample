@@ -51,7 +51,7 @@
                 </li>
               @else
                 <a class="nav-item nav-link navbar-menu text-white" href="{{ route('register.form') }}">
-                  <div>無料お試し</div>
+                  <div>会員登録</div>
                 </a>
                 <a class="nav-item nav-link navbar-menu text-white" href="{{ route('register.form') }}">
                   <div>ログイン</div>

@@ -29,10 +29,18 @@
     </td>
   </tr>
   <tr>
-    <th>備考(任意)</th>
-    <td>
-      @includeWhen($errors->get('remarks'), '_partials.validation_error', ['errors' => $errors->get('remarks')])
-      {!! Form::textarea('remarks', old('remarks'), ['class' => 'form-control', 'rows' => '10', 'cols' => '40']) !!}
+    <th>パスワード <small>(半角英数字8文字以上)</small></th>
+    <td colspan="3">
+      @includeWhen($errors->get('password'), 'admin._partials.validation_error', ['errors' => $errors->get('password')])
+      {{ Form::password('password', ['id' => 'password', 'class' => 'form-control']) }}
+    </td>
+  </tr>
+
+  <tr>
+    <th>パスワード(確認用)</th>
+    <td colspan="3">
+      @includeWhen($errors->get('password_confirmation'), 'admin._partials.validation_error', ['errors' => $errors->get('password_confirmation')])
+      {{ Form::password('password_confirmation', ['id' => 'password_confirmation', 'class' => 'form-control']) }}
     </td>
   </tr>
   </tbody>

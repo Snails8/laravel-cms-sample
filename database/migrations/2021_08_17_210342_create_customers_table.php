@@ -22,6 +22,7 @@ class CreateCustomersTable extends Migration
             $table->string('kana');
             $table->string('tel');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
