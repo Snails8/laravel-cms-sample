@@ -15,7 +15,7 @@ class RegisterMail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param $validated
+     * @return void
      */
     public function __construct($validated)
     {
@@ -30,8 +30,6 @@ class RegisterMail extends Mailable
     public function build()
     {
         $validated = $this->validated;
-        // formatを使うために(string => dateTime)
-        $validated['reserve_date'] = new Carbon($validated['reserve_date']);
 
         $data = [
             'validated' => $validated,

@@ -42,12 +42,16 @@ class RegisterController extends Controller
     public function submit(RegisterPostRequest $request): RedirectResponse
     {
         $validated = $request->validated();
+        $validated['password'] = bcrypt($validated['password']);
 
         DB::beginTransaction();
         try {
             $customer = new Customer();
 
             $customer->fill($validated)->save();
+
+            dd($validated);
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
@@ -55,9 +59,10 @@ class RegisterController extends Controller
             Log::critical('データ保存中に本題が発生しました。ユーザー情報'. implode(' / ', $validated));
             abort('500', 'データ保存中に本題が発生しました。');
         }
+        Mail::queue(new RegisterMail($validated));
 
         // Laravel において mailに関してのみ queue を指定するだけでjobを書かなくとも実行してくれる
-        Mail::queue(new RegisterMail($validated));
+
         return redirect()->route('register.thanks');
     }
 

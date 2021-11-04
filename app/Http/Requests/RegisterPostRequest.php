@@ -32,8 +32,7 @@ class RegisterPostRequest extends FormRequest
             'kana'          => 'required',
             'tel'           => 'required|regex:/^[0-9]{2,4}[0-9]{2,4}[0-9]{3,4}$/',
             'email'         => 'required|email',
-            'password'              => 'required|confirmed|regex:/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i',
-            'password_confirmation' => 'required',
+            'password'      => 'required|regex:/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i',
         ];
 
         return $rules;
@@ -56,8 +55,6 @@ class RegisterPostRequest extends FormRequest
             'email.unique'       => 'このメールアドレスは既に登録されています。',
             'password.required'  => 'パスワードは必須項目です。',
             'password.regex'     => '半角英数字それぞれを1種類以上含む8-100文字で入力してください。',
-            'password.confirmed' => '確認用パスワードと一致していません。',
-            'password_confirmation.required' => 'パスワードは必須項目です。',
         ];
 
         return $messages;

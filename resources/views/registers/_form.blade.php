@@ -36,13 +36,6 @@
     </td>
   </tr>
 
-  <tr>
-    <th>パスワード(確認用)</th>
-    <td colspan="3">
-      @includeWhen($errors->get('password_confirmation'), 'admin._partials.validation_error', ['errors' => $errors->get('password_confirmation')])
-      {{ Form::password('password_confirmation', ['id' => 'password_confirmation', 'class' => 'form-control']) }}
-    </td>
-  </tr>
   </tbody>
 </table>
 
